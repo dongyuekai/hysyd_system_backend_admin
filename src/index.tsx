@@ -1,22 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
-
-function Index() {
-  return <div>index<Outlet></Outlet></div>
-}
-function ErrorPage() {
-  return <div>Error Page</div>
-}
-
-function UserManage() {
-  return <div>user manage</div>
-}
-
-function Login() {
-  return <div>login</div>
-}
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Index, ErrorPage, Login, UserManage } from './pages/index.tsx'
 
 const routes = [
   {
@@ -36,10 +22,10 @@ const routes = [
   }
 ]
 
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
-)
+);
 
-root.render(<RouterProvider router={router} />)
+root.render(<RouterProvider router={router} />);
