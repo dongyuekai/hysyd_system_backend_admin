@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Index, ErrorPage, Login, UserManage } from './pages/index.tsx'
+import { Menu } from './pages/Menu/Menu.tsx'
 
 const routes = [
   {
@@ -11,8 +12,14 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'user_manage',
-        element: <UserManage />
+        path: '/',
+        element: <Menu></Menu>,
+        children: [
+          {
+            path: 'user_manage',
+            element: <UserManage />
+          }
+        ]
       }
     ]
   },
