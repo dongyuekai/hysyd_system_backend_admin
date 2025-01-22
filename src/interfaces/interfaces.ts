@@ -8,9 +8,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("access_Token");
+    const accessToken = localStorage.getItem("access_token");
     if (accessToken) {
-      config.headers["Authorization"] = `Bearer ${accessToken}`;
+      config.headers.authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -56,5 +56,29 @@ export async function login(username: string, password: string) {
   return await axiosInstance.post("/user/admin/login", {
     username,
     password,
+  });
+}
+// 用户搜索
+export async function userSearch(
+  username: string,
+  nickName: string,
+  email: string,
+  pageNo: number,
+  pageSize: number
+) {
+  return await axiosInstance.get("/user/list", {
+    params: {
+      username,
+      nickName,
+      email,
+      pageNo,
+      pageSize,
+    },
+  });
+}
+// 冻结用户
+export async function freeze(id: number) {
+  return await axiosInstance.get("/user/freeze", {
+    params: { id },
   });
 }

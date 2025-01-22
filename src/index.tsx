@@ -13,7 +13,7 @@ const routes = [
     children: [
       {
         path: '/',
-        element: <Menu></Menu>,
+        element: <Menu />,
         children: [
           {
             path: 'user_manage',
