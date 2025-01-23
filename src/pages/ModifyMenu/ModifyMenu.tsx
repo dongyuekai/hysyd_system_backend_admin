@@ -1,7 +1,9 @@
-import React from 'react';
-import { Outlet } from "react-router-dom";
-import { Menu as AntdMenu, MenuProps } from 'antd';
-import './menu.css';
+import React from 'react'
+import { Outlet, useLocation } from "react-router-dom"
+import { Menu as AntdMenu, MenuProps } from 'antd'
+import { MenuClickEventHandler } from 'rc-menu/lib/interface'
+import { router } from '../../../src/index.tsx'
+import './menu.css'
 
 const items: MenuProps['items'] = [
   {
@@ -14,12 +16,25 @@ const items: MenuProps['items'] = [
   }
 ];
 
+const handleMenuItemClick: MenuClickEventHandler = info => {
+  // const handleMenuItemClick: MenuProps['onClick'] = info => {
+  if (info.key === '1') {
+    router.navigate('/user/info_modify')
+  } else {
+    router.navigate('/user/password_modify')
+  }
+}
+
 export function ModifyMenu() {
+  const location = useLocation();
+
   return <div id="menu-container">
     <div className="menu-area">
       <AntdMenu
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={location.pathname === '/user/info_modify' ? ['1'] : ['2']
+        }
         items={items}
+        onClick={handleMenuItemClick}
       />
     </div>
     <div className="content-area">

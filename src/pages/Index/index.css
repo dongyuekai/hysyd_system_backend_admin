@@ -3,6 +3,12 @@
   display: flex;
   flex-direction: column;
 }
+
+#index-container .sys_name {
+  text-decoration: none;
+  color: #000;
+}
+
 #index-container .header{
   height: 80px;
   border-bottom: 1px solid #aaa;
@@ -11,6 +17,7 @@
   justify-content: space-between;
   padding: 0 20px;
 }
+
 #index-container h1{
   margin: 0;
 }
@@ -19,6 +26,7 @@
   font-size: 40px;
   margin-top: 20px;
 }
+
 #index-container .body{
   flex: 1;
 }
